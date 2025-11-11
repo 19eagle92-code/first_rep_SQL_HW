@@ -22,10 +22,34 @@ SELECT name FROM singer
 WHERE name NOT LIKE '% %';
 
 --2.5.Название треков, которые содержат слово «мой» или «my».
-SELECT  title FROM track
-WHERE title ILIKE '%мой%' OR title ILIKE  '%my%';
+SELECT title FROM track /* Имя трека из таблицы треков */
+WHERE 
+	(title ILIKE 'my %' /* Где слово в начале строки */
+	OR title ILIKE '% my' /* Где слово в конце строки */
+	OR title ILIKE '% my %' /* Где слово в середине строки */
+	OR title ILIKE 'my')/* Где название трека состоит из одного искомого слова */
+OR
+	(title ILIKE 'мой %' /* Где слово в начале строки */
+	OR title ILIKE '% мой' /* Где слово в конце строки */
+	OR title ILIKE '% мой %' /* Где слово в середине строки */
+	OR title ILIKE 'мой'); /* Где название трека состоит из одного искомого слова */
 
+-- то же самое, но короче, через массив
+SELECT title FROM track 
+WHERE 
+    title ILIKE ANY (ARRAY['my %', '% my', '% my %', 'my'])
+OR 
+    title ILIKE ANY (ARRAY['мой %', '% мой', '% мой %', 'мой']);
 
+--через функцию string_to_array и приведение всех символов к нижнему регистру, а так же пересечение массивов
+SELECT title FROM track 
+WHERE string_to_array(lower(title), ' ') && ARRAY['my', 'мой'];
+
+-- через регулярные выражения
+SELECT title FROM track 
+WHERE title ~* '\y(my|мой)\y';
+	
+	
 --Задание 3
 --3.1.Количество исполнителей в каждом жанре.
 SELECT g.title AS жанр, COUNT(sg.singer_id) AS количество_исполнителей

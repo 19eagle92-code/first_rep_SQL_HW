@@ -6,17 +6,20 @@ INSERT INTO public.album (title,"year") VALUES
 	 ('Бунт на корабле',2004),
 	 ('Камнем по голове',1996),
 	 ('Будь как дома, Путник',1997),
-	 ('The Wall',1979);
+	 ('The Wall',1979),
+	 ('The Fake Album',2025);
 INSERT INTO public.singer ("name") VALUES
 	 ('Владимир Высоцкий'),
 	 ('Виктор Цой'),
 	 ('Pink Floyd '),
-	 ('КиШ');
+	 ('КиШ'),
+	 ('The Fake Singer');
 INSERT INTO genre (title) VALUES
 	 ('Русский рок'),
 	 ('Зарубежный рок'),
 	 ('Авторская песня'),
-	 ('Панк-рок');
+	 ('Панк-рок'),
+	 ('Рэп');
 INSERT INTO public.track (title,duration,album_id) VALUES
 	 ('Группа крови','00:04:47',3),
 	 ('Песня о друге','00:02:36',1),
@@ -28,13 +31,25 @@ INSERT INTO public.track (title,duration,album_id) VALUES
 	 ('Северный флот','00:02:11',5),
 	 ('Камнем по голове','00:02:38',6),
 	 ('Лесник','00:03:12',8),
-	 ('One Of My Turns','00:03:45',7);
+	 ('One Of My Turns','00:03:45',7),	
+	 ('my own','00:04:40',9),
+	 ('own my','00:02:30',9),
+	 ('my','00:04:10',9),
+	 ('oh my god','00:04:20',9),
+	 ('myself','00:03:10',9),
+	 ('by myself','00:07:40',9),
+	 ('bemy self','00:05:00',9),
+	 ('myself by','00:02:10',9),
+	 ('by myself by','00:02:30',9),
+	 ('beemy','00:03:10',9),
+	 ('premyne','00:03:40',9);
 INSERT INTO public.collection (title,"year") VALUES
 	 ('Лучшие песни группы Король и Шут',2024),
 	 ('Памяти Владимира Высоцкого',2020),
 	 ('Золотая коллекция рока',2005),
 	 ('Золотая коллекция русского рока',2018),
-	 ('Рок на века',2025);
+	 ('Рок на века',2025),
+	 ('The Fake collection',2025);
 INSERT INTO public.collection_track (collection_id,track_id) VALUES
 	 (1,1),
 	 (3,2),
@@ -49,13 +64,17 @@ INSERT INTO public.collection_track (collection_id,track_id) VALUES
 	 (NULL,11),
 	 (5,1),
 	 (5,6),
-	 (5,10);
+	 (5,10),
+	 (6,14),
+	 (6,15),
+	 (6,16);
 INSERT INTO public.singer_genre (singer_id,genre_id) VALUES
 	 (1,3),
 	 (2,1),
 	 (3,2),
 	 (4,1),
-	 (4,4);
+	 (4,4),
+	 (5,5);
 INSERT INTO public.singer_album (singer_id,album_id) VALUES
 	 (1,1),
 	 (1,2),
@@ -64,4 +83,5 @@ INSERT INTO public.singer_album (singer_id,album_id) VALUES
 	 (4,5),
 	 (4,6),
 	 (3,7),
-	 (4,8);
+	 (4,8),
+	 (5,9);
